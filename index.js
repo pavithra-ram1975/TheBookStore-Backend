@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const productRoutes = require("./routes/productRoute");
 const userRoutes = require("./routes/userRoute");
+const orderRoute=require("./routes/orderRoute")
 const mongoose = require("mongoose");
 const cors = require("cors")
 
@@ -16,7 +17,7 @@ app.use(express.json());
 app.use(cors())
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
-app.use("/order",orderRoutes)
+app.use("/order",orderRoute)
 
 app.listen(2525, () => {
   console.log("Server running on port 2525");
