@@ -3,7 +3,7 @@ const User = require("../models/userModel");
 const Cart = require("../models/cartModel");
 
 exports.placeOrder = async (req, res) => {
-  try {
+  // try {
     const { user_id } = req.user;
     const { name, phoneNumber, address } = req.body;
     let user = await User.findOne({ _id: user_id });
@@ -30,9 +30,9 @@ exports.placeOrder = async (req, res) => {
     return res
       .status(201)
       .json({ message: "Order placed successfully", order });
-  } catch (err) {
-    return res.status(404).json({ message: "Error placing order" });
-  }
+  // } catch (err) {
+  //   return res.status(404).json({ message: "Error placing order" });
+  // }
 };
 exports.getOrders = async (req, res) => {
   try {

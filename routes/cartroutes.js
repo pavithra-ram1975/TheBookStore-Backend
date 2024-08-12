@@ -1,7 +1,7 @@
 const express=require("express")
 const router=express.Router()
-const Cartcontroller=require("../controller/Cartcontroller")
-const auth=require("../middleware/auth")
+const Cartcontroller=require("../controllers/cartController")
+const auth=require("../middlewares/auth")
 
 router.post("/",auth,Cartcontroller.postcart)
 router.get("/",auth,Cartcontroller.getcart)
