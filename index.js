@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(cors())
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
+app.use("/order",orderRoutes)
 
 app.listen(2525, () => {
   console.log("Server running on port 2525");
