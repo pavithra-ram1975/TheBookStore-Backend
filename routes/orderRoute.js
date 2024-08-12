@@ -4,6 +4,6 @@ const auth=require("../middlewares/auth")
 const router = express.Router();
 
 router.post("/order",auth,Ordercontroller.placeOrder)
-router.get("/order",auth,Ordercontroller.getOrder)
+router.get("/",auth,Ordercontroller.getOrder)
 
 modile.exports=router;
