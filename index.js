@@ -7,7 +7,7 @@ const cors = require("cors")
 
 mongoose
   .connect(
-    "mongodb://localhost:27017/Pavi")
+    "mongodb+srv://pavithraramasamy2005:Malupavi%401975@cluster0.7euqobi.mongodb.net/Book")
   .then(() => {
     console.log("Connected to db");
   });
