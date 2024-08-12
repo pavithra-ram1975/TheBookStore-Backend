@@ -7,15 +7,16 @@ const cors = require("cors")
 
 mongoose
   .connect(
-    "mongodb+srv://pavithraram:Malupavi@cluster0.siwxvc5.mongodb.net/")
+    "mongodb+srv://pavithraramasamy2005:Malupavi@cluster0.7euqobi.mongodb.net/Boook")
   .then(() => {
     console.log("Connected to db");
   });
 
 app.use(express.json());
+app.use(cors())
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
-app.use(cors())
+
 app.listen(2525, () => {
   console.log("Server running on port 2525");
 });
