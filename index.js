@@ -15,7 +15,7 @@ mongoose
 app.use(express.json());
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
-app.use("cors")
+app.use(cors())
 app.listen(2525, () => {
   console.log("Server running on port 2525");
 });
