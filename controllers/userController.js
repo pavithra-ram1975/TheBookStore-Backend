@@ -13,15 +13,18 @@ exports.getUser = async (req, res) => {
 exports.addUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = new User({
       name,
       email,
-      password,
+      password:hashedPassword,
     });
     await newUser.save();
     res.send(newUser);
   } catch (err) {
     console.log(err);
+    res.status(500).send("Error saving user")
   }
   
 };
