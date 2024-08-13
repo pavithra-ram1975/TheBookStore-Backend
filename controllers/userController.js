@@ -97,7 +97,6 @@ exports.login = async (req, res) => {
       console.log("Password mismatch");
       return res.status(400).json({ error: "Invalid Email or Password" });
     }
-
     const token = jwt.sign({ user_id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });

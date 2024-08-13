@@ -106,8 +106,6 @@ exports.getcart=async(req,res)=>{
     if(!usercart){
         return res.status(200).json("cart not found")
     }else{
-       
-        
         const cartitems=usercart.products
         if(!cartitems){
             res.json("Cart is empty")
