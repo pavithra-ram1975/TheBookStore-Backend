@@ -3,6 +3,8 @@ const express=require("express")
 const cartModel=require("../models/cartModel")
 const cors=require("cors")
 
+
+
 // exports.postcart=async (req,res)=>{
 //     const {userid} =req.user.userid;
 //     const { product_id, quantity } = req.body;
@@ -35,7 +37,7 @@ const cors=require("cors")
 //     }
 // }
 
-app.use(cors())
+
 exports.postcart = async (req, res) => {
     const { userid } = req.user.userid; 
     const { product_id, quantity } = req.body;
