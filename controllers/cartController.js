@@ -96,14 +96,13 @@ const cartModel=require("../models/cartModel")
 //     }
 // }
 exports.postcart = async (req, res) => {
-    const { userid } = req.user; // Assuming req.user contains user information
+    const { userid } = req.user; 
     const { product_id, quantity } = req.body;
   
     try {
       let userCart = await cartModel.findOne({ userid });
   
       if (!userCart) {
-        // Create a new cart if it doesn't exist
         const newCart = new cartModel({
           userid,
           products: [
@@ -142,7 +141,7 @@ exports.postcart = async (req, res) => {
 
 exports.getcart=async(req,res)=>{
     const userid=req.user.userid;
-    const usercart=await cartmodel.findOne({userid})
+    const usercart=await cartModel.findOne({userid})
     console.log(usercart);
     if(!usercart){
         return res.status(200).json("cart not found")
