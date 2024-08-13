@@ -8,11 +8,16 @@ exports.getUser = async (req, res) => {
     res.send(users);
   } catch (err) {
     console.log(err);
+    res.status(500).send("Error fetching users")
   }
 };
 exports.addUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json("User already exists");
+    }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = new User({
@@ -22,6 +27,7 @@ exports.addUser = async (req, res) => {
     });
     await newUser.save();
     res.send(newUser);
+    res.status(201).json({msg:"User registered successfully"})
   } catch (err) {
     console.log(err);
     res.status(500).send("Error saving user")
