@@ -81,18 +81,20 @@ exports.addUser = async (req, res) => {
   // }
 // };
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  // const { email, password } = req.body;
+  const { email } = req.body;
+
   try {
     const user = await User.findOne({ email });
     if (!user) {
       res.status(400).json("Incorrect Email or Password");
     }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json("Invalid  Password");
-    }
+    // const isMatch = await bcrypt.compare(password, user.password);
+    // if (!isMatch) {
+    //   return res.status(400).json("Invalid  Password");
+    // }
     const token = jwt.sign({ user_id: user._id }, "secret_token", {
-      expiresIn: "1d",
+      expiresIn: "1h",
     });
     return res.status(200).json({token:token});
   } catch (err) {
