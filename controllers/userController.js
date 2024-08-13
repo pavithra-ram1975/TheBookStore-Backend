@@ -26,7 +26,7 @@ exports.addUser = async (req, res) => {
       password:hashedPassword,
     });
     await newUser.save();
-    res.send(newUser);
+    // res.send(newUser);
     res.status(201).json({msg:"User registered successfully"})
   } catch (err) {
     console.log(err);
@@ -51,5 +51,6 @@ exports.login = async (req, res) => {
     res.status(200).json(token);
   } catch (err) {
     console.error(err);
+    res.status(500).json("Server Error")
   }
 };
