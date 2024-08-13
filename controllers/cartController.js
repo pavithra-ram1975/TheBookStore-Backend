@@ -62,7 +62,7 @@
 //  }
 
 const express=require("express")
-const cartmodel=require("../models/cartModel")
+const cartModel=require("../models/cartModel")
 
 // exports.postcart=async (req,res)=>{
 //     const {userid} =req.user.userid;
@@ -159,7 +159,7 @@ exports.getcart=async(req,res)=>{
 exports.removefromcart=async(req,res)=>{
     const userid=req.user.userid;
     const {productId} = req.body;
-    const userCart=await cartmodel.findOne({userid})
+    const userCart=await cartModel.findOne({userid})
     if(!userCart){
         return res.status(404).json("cart not found")
     }else{
