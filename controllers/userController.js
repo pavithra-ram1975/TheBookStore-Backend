@@ -80,33 +80,23 @@ exports.addUser = async (req, res) => {
   //   return res.status(500).json("Server Error");
   // }
 // };
-
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-  console.log("Login attempt with:", { email, password });
-
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      console.log("User not found");
-      return res.status(400).json({ error: "Invalidd Email or Password" });
+      res.status(400).json("Incorrect Email or Password");
     }
-
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      console.log("Password mismatch");
-      return res.status(400).json({ error: "Invalid Email or Password" });
+      return res.status(400).json("Invalid Email or Password");
     }
-    const token = jwt.sign({ user_id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ user_id: user._id }, "secret_token", {
       expiresIn: "1d",
     });
-
-    console.log("Login successful, token generated");
-    return res.status(200).json({ token });
+    return res.status(200).json({token:token});
   } catch (err) {
-    console.error("Error during login:", err);
-    return res.status(500).json({ error: "Server Error" });
+    console.error(err);
   }
 };
-
 
