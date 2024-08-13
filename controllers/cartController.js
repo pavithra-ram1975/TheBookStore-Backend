@@ -1,68 +1,7 @@
 
-// const Cart =require("../models/cartModel");
-//  exports.createCart = async (req,res)=>{
-//     const {user_id} = req.user;
-//     const{product_id,quantity}= req.body;
-
-//     let {cart} = await Cart.findOne({user_id});
-//     if(!cart)
-//         {
-//         const newcart = new Cart({
-//             user_id,
-//             products:[
-//                 {
-//                     product_id,
-//                     quantity,
-//                 },
-//             ],
-//         })
-//         // await newcart.save();
-//         // return res
-//         // .status(201)
-//         // .json({message:"Cart created"});
-//     }
-//     else{
-//     const ProductIndex = cart.products.findIndex(
-//         (prod) => prod.product_id === product_id
-//     );
-//     if(!ProductIndex > -1){
-//         cart.products.push({product_id,quantity});
-//     }
-//     else{
-//         cart.products[ProductIndex].quantity = quantity;
-//     }
-    
-//     const ExistingProduct= cart.product.find
-//     (
-//         (prod) => prod.product_id === product_id
-//     );
-// }
-// cart.save();
-// res.status(200).json({message:"Product created/updated"})
-//     if(!ExistingProduct){
-//         const newProduct = cart.products;
-//         newProduct.push({product_id,quantity});
-//         // const newCart = Cart({
-//         //     user_id,
-//         //     products:newProduct,
-//         // });
-//         // await newCart.save();
-//         await Cart.findByIdAndUpdate({user_id},{products:newProducts});
-//         return res
-//         .status(201)
-//         .json({message:"Product added to cart"});
-//     }
-//     else
-//     {
-//         await Cart.findOneandUpdate({user_id},{quantity});
-//         return res
-//         .status(201)
-//         .json({message:"quantity updated"});
-//     }
-//  }
-
 const express=require("express")
 const cartModel=require("../models/cartModel")
+const cors=require("cors")
 
 // exports.postcart=async (req,res)=>{
 //     const {userid} =req.user.userid;
@@ -95,6 +34,8 @@ const cartModel=require("../models/cartModel")
 //         res.json("cart updated")
 //     }
 // }
+
+app.use(cors())
 exports.postcart = async (req, res) => {
     const { userid } = req.user; 
     const { product_id, quantity } = req.body;
