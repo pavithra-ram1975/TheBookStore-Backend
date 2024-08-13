@@ -4,7 +4,7 @@ const Cartcontroller=require("../controllers/cartController")
 const auth=require("../middlewares/auth")
 
 router.post("/",auth,Cartcontroller.postcart)
-router.get("/",auth,Cartcontroller.getcart)
+router.get("/",Cartcontroller.getcart)
 router.delete("/:product_id",auth,Cartcontroller.removefromcart)
 
 module.exports=router;
