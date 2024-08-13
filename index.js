@@ -11,12 +11,12 @@ app.use(express.json());
 
 app.use(cors())
 mongoose
-  .connect(
-    // "mongodb+srv://pavithraramasamy2005:Malupavi@cluster0.7euqobi.mongodb.net/Boook")
-  "mongodb+srv://pavithraram:Malupavi@cluster0.siwxvc5.mongodb.net/TheBookStore"
+  .connect("mongodb+srv://pavithraramasamy2005:Malupavi@cluster0.7euqobi.mongodb.net/TheBookStore")
+   
+  // "mongodb+srv://pavithraram:Malupavi@cluster0.siwxvc5.mongodb.net/TheBookStore"
   // "mongodb://localhost:27017/Book"
   
-)
+// )
   .then(() => {
     console.log("Connected to db");
   });
