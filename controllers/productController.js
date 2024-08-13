@@ -13,12 +13,13 @@ exports.getProducts = async (req, res) => {
 
 exports.addProducts = async (req, res) => {
   try {
-    const { title, description, price, category, rating, image } = req.body;
+    const { title, description, price,author, category, rating, image } = req.body;
     const newProduct = new Product({
       id: uuidv4(),
       title,
       description,
       price,
+      author,
       category,
       rating,
       image,

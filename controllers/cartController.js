@@ -65,7 +65,8 @@ const express=require("express")
 const cartmodel=require("../models/cartModel")
 
 exports.postcart=async (req,res)=>{
-    const userid=req.user.userid;
+    const {userid} =req.user.userid;
+    const { product_id, quantity } = req.body;
     const user=await cartmodel.findOne({userid})
    
     
