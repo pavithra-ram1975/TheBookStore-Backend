@@ -2,9 +2,6 @@
 const express=require("express")
 const cartModel=require("../models/cartModel")
 const cors=require("cors")
-
-
-
 // exports.postcart=async (req,res)=>{
 //     const {userid} =req.user.userid;
 //     const { product_id, quantity } = req.body;
@@ -58,7 +55,6 @@ exports.postcart = async (req, res) => {
         await newCart.save();
         return res.status(201).json("Cart created");
       } else {
-        // Update existing cart
         const existingProduct = userCart.products.find(
           (product) => product.product_id === product_id
         );
@@ -99,7 +95,7 @@ exports.getcart=async(req,res)=>{
 }
 
 exports.removefromcart=async(req,res)=>{
-    const userid=req.user.userid;
+    const userid=req.user;
     const {productId} = req.body;
     const userCart=await cartModel.findOne({userid})
     if(!userCart){
