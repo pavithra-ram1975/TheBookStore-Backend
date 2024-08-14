@@ -36,7 +36,7 @@ const cors=require("cors")
 
 
 exports.postcart = async (req, res) => {
-    const { userid } = req.user.userid; 
+    const { userid } = req.user; 
     const { product_id, quantity } = req.body;
   
     try {
@@ -60,7 +60,7 @@ exports.postcart = async (req, res) => {
         );
   
         if (existingProduct) {
-          existingProduct.quantity += quantity; // Update quantity
+          existingProduct.quantity += quantity; 
         } else {
           userCart.products.push({
             product_id,
@@ -79,7 +79,7 @@ exports.postcart = async (req, res) => {
 
 
 exports.getcart=async(req,res)=>{
-    const userid=req.user.userid;
+    const userid=req.user;
     const usercart=await cartModel.findOne({userid})
     console.log(usercart);
     if(!usercart){
