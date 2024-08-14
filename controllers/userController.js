@@ -12,7 +12,7 @@ exports.getUser = async (req, res) => {
   }
 };
 exports.addUser = async (req, res) => {
-  try {
+  // try {
     const { name, email, password } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -28,10 +28,10 @@ exports.addUser = async (req, res) => {
     await newUser.save();
     // res.send(newUser);
     res.status(201).json({msg:"User registered successfully"})
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Error saving user")
-  }
+  // } catch (err) {
+  //   console.log(err);
+  //   res.status(500).send("Error saving user")
+  // }
   
 };
 // exports.login = async (req, res) => {
